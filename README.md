@@ -185,6 +185,9 @@ There are three experimental feature:
     GMP sources are miscompiled is unfortunately quite high. And if
     they indeed are miscompiled, the tests are very likely to trigger
     the compiler-introduced bug.
+ 4. `nightly-f128`, disabled by default. This requires the nightly compiler, and
+    adds bindings to [MPFR] methods taking `_Float128`. It also requires the C
+    libraries to be built with 128-bit floating-point number support.
 
 ## Metadata
 

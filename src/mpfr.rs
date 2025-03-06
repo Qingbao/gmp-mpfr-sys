@@ -337,6 +337,14 @@ extern "C" {
     /// See: [`mpfr_set_d`](../C/MPFR/constant.MPFR_Interface.html#index-mpfr_005fset_005fd)
     #[link_name = "mpfr_set_d"]
     pub fn set_d(rop: mpfr_ptr, op: f64, rnd: rnd_t) -> c_int;
+    #[cfg(feature = "nightly-f128")]
+    /// See: [`mpfr_set_float128`](../C/MPFR/constant.MPFR_Interface.html#index-mpfr_005fset_005ffloat128)
+    #[link_name = "mpfr_set_float128"]
+    pub fn set_float128(rop: mpfr_ptr, op: f128, rnd: rnd_t) -> c_int;
+    #[cfg(feature = "nightly-f128")]
+    /// See: [`mpfr_get_float128`](../C/MPFR/constant.MPFR_Interface.html#index-mpfr_005fget_005ffloat128)
+    #[link_name = "mpfr_get_float128"]
+    pub fn get_float128(rop: mpfr_srcptr, rnd: rnd_t) -> f128;
     /// See: [`mpfr_set_z`](../C/MPFR/constant.MPFR_Interface.html#index-mpfr_005fset_005fz)
     #[link_name = "mpfr_set_z"]
     pub fn set_z(rop: mpfr_ptr, op: mpz_srcptr, rnd: rnd_t) -> c_int;
@@ -1678,6 +1686,25 @@ mod tests {
             assert!(mpfr::set_ui(&mut f, 0xff, mpfr::rnd_t::RNDD) < 0);
             assert_eq!(mpfr::nan_p(&f), 0);
             assert_eq!(mpfr::get_ui(&f, mpfr::rnd_t::RNDN), 0xf8);
+        }
+    }
+
+    #[cfg(feature = "nightly-f128")]
+    #[test]
+    fn check_nightly_f128() {
+        unsafe {
+            assert_ne!(mpfr::buildopt_float128_p(), 0);
+
+            let mut f = MaybeUninit::uninit();
+            mpfr::init2(f.as_mut_ptr(), 200);
+            let mut f = f.assume_init();
+
+            mpfr::set_float128(&mut f, 13.75f128, mpfr::rnd_t::RNDD);
+            assert_eq!(mpfr::get_flt(&f, mpfr::rnd_t::RNDD), 13.75f32);
+            assert_eq!(mpfr::get_flt(&f, mpfr::rnd_t::RNDU), 13.75f32);
+            assert_eq!(mpfr::get_float128(&f, mpfr::rnd_t::RNDN), 13.75f128);
+
+            mpfr::clear(&mut f);
         }
     }
 }

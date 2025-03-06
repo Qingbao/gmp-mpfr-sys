@@ -9,7 +9,11 @@
 //
 //  1. Configure GMP with --enable-fat so that built file is portable.
 //
-//  2. Configure MPFR with --enable-thread-safe --disable-decimal-float --disable-float128.
+//  2. Configure MPFR with either
+//         --enable-thread-safe --disable-decimal-float --disable-float128
+//     or
+//         --enable-thread-safe --disable-decimal-float --enable-float128
+//     according to the nightly-f128 feature.
 //
 //  3. Configure GMP, MPFR and MPC with: --disable-shared --with-pic
 //
@@ -27,7 +31,7 @@
 
 use std::cmp::Ordering;
 use std::env;
-use std::ffi::{OsStr, OsString};
+use std::ffi::{c_int, OsStr, OsString};
 use std::fs;
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Result as IoResult, Write};
@@ -56,6 +60,7 @@ enum Target {
 struct Environment {
     rustc: OsString,
     c_compiler: OsString,
+    float128: bool,
     target: Target,
     cross_target: Option<String>,
     c_no_tests: bool,
@@ -93,6 +98,8 @@ fn main() {
             OsString::from(format!("CFLAGS-{hash:016X}"))
         }
     });
+
+    let float128 = there_is_env("CARGO_FEATURE_NIGHTLY_F128");
 
     let host = cargo_env("HOST")
         .into_string()
@@ -145,6 +152,13 @@ fn main() {
         .map(|cache| match cflags_cache_dir {
             Some(dir) => cache.join(dir),
             None => cache,
+        })
+        .map(|cache| {
+            if float128 {
+                cache.join("float128")
+            } else {
+                cache
+            }
         });
 
     let use_system_libs = there_is_env("CARGO_FEATURE_USE_SYSTEM_LIBS");
@@ -158,6 +172,7 @@ fn main() {
     let env = Environment {
         rustc,
         c_compiler,
+        float128,
         target,
         cross_target,
         c_no_tests,
@@ -794,6 +809,7 @@ fn process_mpfr_header(
     let mut minor = None;
     let mut patchlevel = None;
     let mut version = None;
+    let mut float128_p = None;
     let mut reader = open(header);
     let mut buf = String::new();
     while read_line(&mut reader, &mut buf, header) > 0 {
@@ -818,6 +834,10 @@ fn process_mpfr_header(
                     .to_string(),
             );
         }
+        let s = "// mpfr_buildopt_float128_p() -> ";
+        if let Some(start) = buf.find(s) {
+            float128_p = buf[(start + s.len())..].trim().parse::<c_int>().ok();
+        }
         buf.clear();
     }
     drop(reader);
@@ -830,6 +850,11 @@ fn process_mpfr_header(
             "This version of gmp-mpfr-sys supports MPFR {}.{}.{}, but {}.{}.{} was found",
             MPFR_VER.0, MPFR_VER.1, MPFR_VER.2, major, minor, patchlevel
         ));
+    }
+    if env.use_system_libs && env.float128 {
+        if float128_p.expect("Cannot determine mpfr_buildopt_float128_p().") == 0 {
+            panic!("System library built without float128 support.");
+        }
     }
 
     let version = version.expect("Cannot determine MPFR_VERSION_STRING");
@@ -929,8 +954,15 @@ fn build_mpfr(env: &Environment, lib: &Path, header: &Path) {
     std::env::remove_var("CC");
     std::env::remove_var("CFLAGS");
 
-    let mut conf = String::from(
-        "../mpfr-src/configure --enable-thread-safe --disable-decimal-float --disable-float128 \
+    let mut conf =
+        String::from("../mpfr-src/configure --enable-thread-safe --disable-decimal-float");
+    if env.float128 {
+        conf.push_str(" --enable-float128");
+    } else {
+        conf.push_str(" --disable-float128");
+    }
+    conf.push_str(
+        " \
          --disable-shared --with-gmp-build=../gmp-build --with-pic",
     );
     if let Some(cross_target) = env.cross_target.as_ref() {
@@ -1380,6 +1412,8 @@ int main(void) {
     fputs(DEFINE_STR(MPFR_VERSION_MINOR), f);
     fputs(DEFINE_STR(MPFR_VERSION_PATCHLEVEL), f);
     fputs(DEFINE_STR(MPFR_VERSION_STRING), f);
+
+    fprintf(f, "// mpfr_buildopt_float128_p() -> %d\n", mpfr_buildopt_float128_p());
 
     fclose(f);
 

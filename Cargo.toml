@@ -31,6 +31,7 @@ mpfr = []
 # experimental features
 c-no-tests = []
 force-cross = []
+nightly-f128 = []
 use-system-libs = []
 
 # undocumented features

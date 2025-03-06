@@ -155,6 +155,9 @@ There are three experimental features:
     GMP sources are miscompiled is unfortunately quite high. And if
     they indeed are miscompiled, the tests are very likely to trigger
     the compiler-introduced bug.
+ 4. `nightly-f128`, disabled by default. This requires the nightly compiler, and
+    adds bindings to [MPFR] methods taking `_Float128`. It also requires the C
+    libraries to be built with 128-bit floating-point number support.
 
 ## Metadata
 
@@ -370,6 +373,7 @@ Ii8+PC9nPjwvZz48L2c+PC9zdmc+Cg==
 #![cfg_attr(feature = "fail-on-warnings", deny(warnings))]
 #![warn(unsafe_op_in_unsafe_fn)]
 #![allow(clippy::missing_safety_doc, clippy::useless_conversion)]
+#![cfg_attr(feature = "nightly-f128", feature(f128))]
 
 pub mod gmp;
 #[cfg(feature = "mpc")]
