@@ -885,8 +885,8 @@ extern "C" {
 /// See: [`mpz_getlimbn`](../C/GMP/constant.Integer_Functions.html#index-mpz_005fgetlimbn)
 #[inline]
 pub const unsafe extern "C" fn mpz_getlimbn(op: mpz_srcptr, n: size_t) -> limb_t {
-    if n >= 0 && n < (unsafe { (*op).size }.abs() as size_t) {
-        unsafe { *(((*op).d.as_ptr().cast_const()).offset(n as isize)) }
+    if n >= 0 && (n as usize) < (unsafe { (*op).size }.unsigned_abs() as usize) {
+        unsafe { *(*op).d.as_ptr().cast_const().offset(n as isize) }
     } else {
         0
     }
