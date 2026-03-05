@@ -321,8 +321,8 @@ pub unsafe extern "C" fn mpz_get_ui(op: mpz_srcptr) -> c_ulong {
 #[inline]
 #[cfg(all(nails, not(long_long_limb)))]
 pub unsafe extern "C" fn mpz_get_ui(op: mpz_srcptr) -> c_ulong {
-    let p = unsafe { (*op).d };
-    let n = unsafe { (*op).size }.abs();
+    let p = unsafe { (*op).d }.as_ptr();
+    let n = unsafe { (*op).size }.unsigned_abs();
     if n == 0 {
         0
     } else if n == 1 {
