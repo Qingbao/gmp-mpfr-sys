@@ -279,9 +279,8 @@ extern "C" {
 macro_rules! MPFR_DECL_INIT {
     ($name:ident, $prec:expr) => {
         // limbs is visible only in one macro instance thanks to macro hygiene
-        let mut limbs: [core::mem::MaybeUninit<$crate::gmp::limb_t>;
-            ($prec as usize - 1) / $crate::gmp::NUMB_BITS as usize + 1] =
-            unsafe { core::mem::MaybeUninit::uninit().assume_init() };
+        let mut limbs = [core::mem::MaybeUninit::<$crate::gmp::limb_t>::uninit();
+            ($prec as usize - 1) / $crate::gmp::NUMB_BITS as usize + 1];
         let mut $name = $crate::mpfr::mpfr_t {
             prec: $prec as $crate::mpfr::prec_t,
             sign: 1,
