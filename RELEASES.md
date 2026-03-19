@@ -8,6 +8,7 @@ as-is, without any warranty. -->
 Version 1.7.0 (unreleased)
 ==========================
 
+  * The crate now requires rustc version 1.71.0 or later.
   * [MPC] was updated from version 1.3.1 to 1.4.0.
 
 Version 1.6.8 (2025-09-03)
