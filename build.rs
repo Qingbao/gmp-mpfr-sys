@@ -41,10 +41,10 @@ use std::str;
 
 const GMP_DIR: &str = "gmp-6.3.0-c";
 const MPFR_DIR: &str = "mpfr-4.2.2-c";
-const MPC_DIR: &str = "mpc-1.3.1-c";
+const MPC_DIR: &str = "mpc-1.4.0-c";
 const GMP_VER: (i32, i32, i32) = (6, 3, 0);
 const MPFR_VER: (i32, i32, i32) = (4, 2, 2);
-const MPC_VER: (i32, i32, i32) = (1, 3, 1);
+const MPC_VER: (i32, i32, i32) = (1, 4, 0);
 
 #[derive(Clone, Copy, PartialEq)]
 enum Target {

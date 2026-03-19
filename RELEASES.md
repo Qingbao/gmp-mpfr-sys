@@ -5,6 +5,11 @@ modification, are permitted in any medium without royalty provided the
 copyright notice and this notice are preserved. This file is offered
 as-is, without any warranty. -->
 
+Version 1.7.0 (unreleased)
+==========================
+
+  * [MPC] was updated from version 1.3.1 to 1.4.0.
+
 Version 1.6.8 (2025-09-03)
 ==========================
 
