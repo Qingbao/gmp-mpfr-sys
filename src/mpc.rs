@@ -521,9 +521,18 @@ extern "C" {
     /// See: [`mpc_exp`](../C/MPC/constant.Complex_Functions.html#index-mpc_005fexp)
     #[link_name = "mpc_exp"]
     pub fn exp(rop: mpc_ptr, op: mpc_srcptr, rnd: rnd_t) -> c_int;
+    /// See: [`mpc_exp2`](../C/MPC/constant.Complex_Functions.html#index-mpc_005fexp2)
+    #[link_name = "mpc_exp2"]
+    pub fn exp2(rop: mpc_ptr, op: mpc_srcptr, rnd: rnd_t) -> c_int;
+    /// See: [`mpc_exp10`](../C/MPC/constant.Complex_Functions.html#index-mpc_005fexp10)
+    #[link_name = "mpc_exp10"]
+    pub fn exp10(rop: mpc_ptr, op: mpc_srcptr, rnd: rnd_t) -> c_int;
     /// See: [`mpc_log`](../C/MPC/constant.Complex_Functions.html#index-mpc_005flog)
     #[link_name = "mpc_log"]
     pub fn log(rop: mpc_ptr, op: mpc_srcptr, rnd: rnd_t) -> c_int;
+    /// See: [`mpc_log2`](../C/MPC/constant.Complex_Functions.html#index-mpc_005flog2)
+    #[link_name = "mpc_log2"]
+    pub fn log2(rop: mpc_ptr, op: mpc_srcptr, rnd: rnd_t) -> c_int;
     /// See: [`mpc_log10`](../C/MPC/constant.Complex_Functions.html#index-mpc_005flog10)
     #[link_name = "mpc_log10"]
     pub fn log10(rop: mpc_ptr, op: mpc_srcptr, rnd: rnd_t) -> c_int;
