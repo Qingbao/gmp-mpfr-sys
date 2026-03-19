@@ -449,33 +449,33 @@ Next: <a href="#Compatibility-with-older-versions" accesskey="n" rel="next">Comp
 <h3 class="section" id="Useful-Macros-and-Constants-1"><span>3.8 Useful Macros and Constants<a class="copiable-link" href="#Useful-Macros-and-Constants-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-Useful-macros-and-constants"></a>
 <a class="index-entry-id" id="index-Constants"></a>
-<dl class="first-deftypevr">
-<dt class="deftypevr" id="index-mp_005fbits_005fper_005flimb-1"><span class="category-def">Global Constant: </span><span><code class="def-type">const int</code> <strong class="def-name">mp_bits_per_limb</strong><a class="copiable-link" href="#index-mp_005fbits_005fper_005flimb-1"> &para;</a></span></dt>
+<dl class="first-deftypevr def-block">
+<dt class="deftypevr def-line" id="index-mp_005fbits_005fper_005flimb-1"><span class="category-def">Global Constant: </span><span><code class="def-type">const int</code> <strong class="def-name">mp_bits_per_limb</strong><a class="copiable-link" href="#index-mp_005fbits_005fper_005flimb-1"> &para;</a></span></dt>
 <dd><a class="index-entry-id" id="index-mp_005fbits_005fper_005flimb"></a>
 <a class="index-entry-id" id="index-Bits-per-limb"></a>
 <a class="index-entry-id" id="index-Limb-size"></a>
 <p>The number of bits per limb.
 </p></dd></dl>
-<dl class="first-deffn first-defmac-alias-first-deffn">
-<dt class="deffn defmac-alias-deffn" id="index-_005f_005fGNU_005fMP_005fVERSION"><span class="category-def">Macro: </span><span><strong class="def-name">__GNU_MP_VERSION</strong><a class="copiable-link" href="#index-_005f_005fGNU_005fMP_005fVERSION"> &para;</a></span></dt>
-<dt class="deffnx defmacx-alias-deffnx def-cmd-deffn" id="index-_005f_005fGNU_005fMP_005fVERSION_005fMINOR"><span class="category-def">Macro: </span><span><strong class="def-name">__GNU_MP_VERSION_MINOR</strong><a class="copiable-link" href="#index-_005f_005fGNU_005fMP_005fVERSION_005fMINOR"> &para;</a></span></dt>
-<dt class="deffnx defmacx-alias-deffnx def-cmd-deffn" id="index-_005f_005fGNU_005fMP_005fVERSION_005fPATCHLEVEL"><span class="category-def">Macro: </span><span><strong class="def-name">__GNU_MP_VERSION_PATCHLEVEL</strong><a class="copiable-link" href="#index-_005f_005fGNU_005fMP_005fVERSION_005fPATCHLEVEL"> &para;</a></span></dt>
+<dl class="first-deffn first-defmac-alias-first-deffn def-block">
+<dt class="deffn defmac-alias-deffn def-line" id="index-_005f_005fGNU_005fMP_005fVERSION"><span class="category-def">Macro: </span><span><strong class="def-name">__GNU_MP_VERSION</strong><a class="copiable-link" href="#index-_005f_005fGNU_005fMP_005fVERSION"> &para;</a></span></dt>
+<dt class="deffnx defmacx-alias-deffnx def-cmd-deffn def-line" id="index-_005f_005fGNU_005fMP_005fVERSION_005fMINOR"><span class="category-def">Macro: </span><span><strong class="def-name">__GNU_MP_VERSION_MINOR</strong><a class="copiable-link" href="#index-_005f_005fGNU_005fMP_005fVERSION_005fMINOR"> &para;</a></span></dt>
+<dt class="deffnx defmacx-alias-deffnx def-cmd-deffn def-line" id="index-_005f_005fGNU_005fMP_005fVERSION_005fPATCHLEVEL"><span class="category-def">Macro: </span><span><strong class="def-name">__GNU_MP_VERSION_PATCHLEVEL</strong><a class="copiable-link" href="#index-_005f_005fGNU_005fMP_005fVERSION_005fPATCHLEVEL"> &para;</a></span></dt>
 <dd><a class="index-entry-id" id="index-Version-number"></a>
 <a class="index-entry-id" id="index-GMP-version-number"></a>
 <p>The major and minor GMP version, and patch level, respectively, as integers.
 For GMP i.j, these numbers will be i, j, and 0, respectively.
 For GMP i.j.k, these numbers will be i, j, and k, respectively.
 </p></dd></dl>
-<dl class="first-deftypevr">
-<dt class="deftypevr" id="index-gmp_005fversion-1"><span class="category-def">Global Constant: </span><span><code class="def-type">const char * const</code> <strong class="def-name">gmp_version</strong><a class="copiable-link" href="#index-gmp_005fversion-1"> &para;</a></span></dt>
+<dl class="first-deftypevr def-block">
+<dt class="deftypevr def-line" id="index-gmp_005fversion-1"><span class="category-def">Global Constant: </span><span><code class="def-type">const char * const</code> <strong class="def-name">gmp_version</strong><a class="copiable-link" href="#index-gmp_005fversion-1"> &para;</a></span></dt>
 <dd><a class="index-entry-id" id="index-gmp_005fversion"></a>
 <p>The GMP version number, as a null-terminated string, in the form &ldquo;i.j.k&rdquo;.
 This release is <code class="code">&quot;6.3.0&quot;</code>.  Note that the format &ldquo;i.j&rdquo; was
 used, before version 4.3.0, when k was zero.
 </p></dd></dl>
-<dl class="first-deffn first-defmac-alias-first-deffn">
-<dt class="deffn defmac-alias-deffn" id="index-_005f_005fGMP_005fCC"><span class="category-def">Macro: </span><span><strong class="def-name">__GMP_CC</strong><a class="copiable-link" href="#index-_005f_005fGMP_005fCC"> &para;</a></span></dt>
-<dt class="deffnx defmacx-alias-deffnx def-cmd-deffn" id="index-_005f_005fGMP_005fCFLAGS"><span class="category-def">Macro: </span><span><strong class="def-name">__GMP_CFLAGS</strong><a class="copiable-link" href="#index-_005f_005fGMP_005fCFLAGS"> &para;</a></span></dt>
+<dl class="first-deffn first-defmac-alias-first-deffn def-block">
+<dt class="deffn defmac-alias-deffn def-line" id="index-_005f_005fGMP_005fCC"><span class="category-def">Macro: </span><span><strong class="def-name">__GMP_CC</strong><a class="copiable-link" href="#index-_005f_005fGMP_005fCC"> &para;</a></span></dt>
+<dt class="deffnx defmacx-alias-deffnx def-cmd-deffn def-line" id="index-_005f_005fGMP_005fCFLAGS"><span class="category-def">Macro: </span><span><strong class="def-name">__GMP_CFLAGS</strong><a class="copiable-link" href="#index-_005f_005fGMP_005fCFLAGS"> &para;</a></span></dt>
 <dd><p>The compiler and compiler flags, respectively, used when compiling GMP, as
 strings.
 </p></dd></dl>

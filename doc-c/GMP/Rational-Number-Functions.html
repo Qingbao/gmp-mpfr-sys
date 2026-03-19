@@ -29,8 +29,8 @@ Zero has the unique representation 0/1.
 the responsibility of the user to canonicalize the assigned variable before
 any arithmetic operations are performed on that variable.
 </p>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fcanonicalize"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_canonicalize</strong> <code class="def-code-arguments">(mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fcanonicalize"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fcanonicalize"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_canonicalize</strong> <code class="def-code-arguments">(mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fcanonicalize"> &para;</a></span></dt>
 <dd><p>Remove any factors that are common to the numerator and denominator of
 <var class="var">op</var>, and make the denominator positive.
 </p></dd></dl>
@@ -53,40 +53,40 @@ Next: <a href="#Rational-Conversions" accesskey="n" rel="next">Conversion Functi
 <a class="index-entry-id" id="index-Assignment-functions-2"></a>
 <a class="index-entry-id" id="index-Rational-initialization-functions"></a>
 <a class="index-entry-id" id="index-Initialization-functions-2"></a>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005finit"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_init</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>)</code><a class="copiable-link" href="#index-mpq_005finit"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005finit"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_init</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>)</code><a class="copiable-link" href="#index-mpq_005finit"> &para;</a></span></dt>
 <dd><p>Initialize <var class="var">x</var> and set it to 0/1.  Each variable should normally only be
 initialized once, or at least cleared out (using the function <code class="code">mpq_clear</code>)
 between each initialization.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005finits"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_inits</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>, ...)</code><a class="copiable-link" href="#index-mpq_005finits"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005finits"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_inits</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>, ...)</code><a class="copiable-link" href="#index-mpq_005finits"> &para;</a></span></dt>
 <dd><p>Initialize a NULL-terminated list of <code class="code">mpq_t</code> variables, and set their
 values to 0/1.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_clear</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>)</code><a class="copiable-link" href="#index-mpq_005fclear"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_clear</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>)</code><a class="copiable-link" href="#index-mpq_005fclear"> &para;</a></span></dt>
 <dd><p>Free the space occupied by <var class="var">x</var>.  Make sure to call this function for all
 <code class="code">mpq_t</code> variables when you are done with them.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fclears"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_clears</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>, ...)</code><a class="copiable-link" href="#index-mpq_005fclears"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fclears"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_clears</strong> <code class="def-code-arguments">(mpq_t <var class="var">x</var>, ...)</code><a class="copiable-link" href="#index-mpq_005fclears"> &para;</a></span></dt>
 <dd><p>Free the space occupied by a NULL-terminated list of <code class="code">mpq_t</code> variables.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fset"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset"> &para;</a></span></dt>
-<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn" id="index-mpq_005fset_005fz"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_z</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpz_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fz"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fset"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fset_005fz"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_z</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpz_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fz"> &para;</a></span></dt>
 <dd><p>Assign <var class="var">rop</var> from <var class="var">op</var>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fset_005fui"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_ui</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, unsigned long int <var class="var">op1</var>, unsigned long int <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fui"> &para;</a></span></dt>
-<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn" id="index-mpq_005fset_005fsi"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_si</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, signed long int <var class="var">op1</var>, unsigned long int <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fsi"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fset_005fui"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_ui</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, unsigned long int <var class="var">op1</var>, unsigned long int <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fui"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fset_005fsi"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_si</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, signed long int <var class="var">op1</var>, unsigned long int <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fsi"> &para;</a></span></dt>
 <dd><p>Set the value of <var class="var">rop</var> to <var class="var">op1</var>/<var class="var">op2</var>.  Note that if <var class="var">op1</var> and
 <var class="var">op2</var> have common factors, <var class="var">rop</var> has to be passed to
 <code class="code">mpq_canonicalize</code> before any operations are performed on <var class="var">rop</var>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fset_005fstr"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_set_str</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const char *<var class="var">str</var>, int <var class="var">base</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fstr"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fset_005fstr"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_set_str</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const char *<var class="var">str</var>, int <var class="var">base</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fstr"> &para;</a></span></dt>
 <dd><p>Set <var class="var">rop</var> from a null-terminated string <var class="var">str</var> in the given <var class="var">base</var>.
 </p>
 <p>The string can be an integer like &ldquo;41&rdquo; or a fraction like &ldquo;41/152&rdquo;.  The
@@ -105,8 +105,8 @@ whereas <code class="code">0xEF/0x100</code> is 239/256.
 <p>The return value is 0 if the entire string is a valid number, or &minus;1 if
 not.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fswap"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_swap</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop1</var>, mpq_t <var class="var">rop2</var>)</code><a class="copiable-link" href="#index-mpq_005fswap"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fswap"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_swap</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop1</var>, mpq_t <var class="var">rop2</var>)</code><a class="copiable-link" href="#index-mpq_005fswap"> &para;</a></span></dt>
 <dd><p>Swap the values <var class="var">rop1</var> and <var class="var">rop2</var> efficiently.
 </p></dd></dl>
 <hr>
@@ -119,8 +119,8 @@ Next: <a href="#Rational-Arithmetic" accesskey="n" rel="next">Arithmetic Functio
 <h3 class="section" id="Conversion-Functions-1"><span>6.2 Conversion Functions<a class="copiable-link" href="#Conversion-Functions-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-Rational-conversion-functions"></a>
 <a class="index-entry-id" id="index-Conversion-functions-1"></a>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fget_005fd"><span class="category-def">Function: </span><span><code class="def-type">double</code> <strong class="def-name">mpq_get_d</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fd"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fget_005fd"><span class="category-def">Function: </span><span><code class="def-type">double</code> <strong class="def-name">mpq_get_d</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fd"> &para;</a></span></dt>
 <dd><p>Convert <var class="var">op</var> to a <code class="code">double</code>, truncating if necessary (i.e. rounding
 towards zero).
 </p>
@@ -129,14 +129,14 @@ towards zero).
 returned when available.  For too small <em class="math">0.0</em> is normally returned.
 Hardware overflow, underflow and denorm traps may or may not occur.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fset_005fd"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_d</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, double <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fd"> &para;</a></span></dt>
-<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn" id="index-mpq_005fset_005ff"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_f</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpf_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005ff"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fset_005fd"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_d</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, double <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fd"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fset_005ff"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_f</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpf_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005ff"> &para;</a></span></dt>
 <dd><p>Set <var class="var">rop</var> to the value of <var class="var">op</var>.  There is no rounding, this conversion
 is exact.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fget_005fstr"><span class="category-def">Function: </span><span><code class="def-type">char *</code> <strong class="def-name">mpq_get_str</strong> <code class="def-code-arguments">(char *<var class="var">str</var>, int <var class="var">base</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fstr"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fget_005fstr"><span class="category-def">Function: </span><span><code class="def-type">char *</code> <strong class="def-name">mpq_get_str</strong> <code class="def-code-arguments">(char *<var class="var">str</var>, int <var class="var">base</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fstr"> &para;</a></span></dt>
 <dd><p>Convert <var class="var">op</var> to a string of digits in base <var class="var">base</var>.  The base argument
 may vary from 2 to 62 or from &minus;2 to &minus;36.  The string will be of
 the form &lsquo;<samp class="samp">num/den</samp>&rsquo;, or if the denominator is 1 then just &lsquo;<samp class="samp">num</samp>&rsquo;.
@@ -174,43 +174,43 @@ Next: <a href="#Comparing-Rationals" accesskey="n" rel="next">Comparison Functio
 <h3 class="section" id="Arithmetic-Functions-1"><span>6.3 Arithmetic Functions<a class="copiable-link" href="#Arithmetic-Functions-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-Rational-arithmetic-functions"></a>
 <a class="index-entry-id" id="index-Arithmetic-functions-1"></a>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fadd"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_add</strong> <code class="def-code-arguments">(mpq_t <var class="var">sum</var>, const mpq_t <var class="var">addend1</var>, const mpq_t <var class="var">addend2</var>)</code><a class="copiable-link" href="#index-mpq_005fadd"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fadd"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_add</strong> <code class="def-code-arguments">(mpq_t <var class="var">sum</var>, const mpq_t <var class="var">addend1</var>, const mpq_t <var class="var">addend2</var>)</code><a class="copiable-link" href="#index-mpq_005fadd"> &para;</a></span></dt>
 <dd><p>Set <var class="var">sum</var> to <var class="var">addend1</var> + <var class="var">addend2</var>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fsub"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_sub</strong> <code class="def-code-arguments">(mpq_t <var class="var">difference</var>, const mpq_t <var class="var">minuend</var>, const mpq_t <var class="var">subtrahend</var>)</code><a class="copiable-link" href="#index-mpq_005fsub"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fsub"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_sub</strong> <code class="def-code-arguments">(mpq_t <var class="var">difference</var>, const mpq_t <var class="var">minuend</var>, const mpq_t <var class="var">subtrahend</var>)</code><a class="copiable-link" href="#index-mpq_005fsub"> &para;</a></span></dt>
 <dd><p>Set <var class="var">difference</var> to <var class="var">minuend</var> &minus; <var class="var">subtrahend</var>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fmul"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_mul</strong> <code class="def-code-arguments">(mpq_t <var class="var">product</var>, const mpq_t <var class="var">multiplier</var>, const mpq_t <var class="var">multiplicand</var>)</code><a class="copiable-link" href="#index-mpq_005fmul"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fmul"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_mul</strong> <code class="def-code-arguments">(mpq_t <var class="var">product</var>, const mpq_t <var class="var">multiplier</var>, const mpq_t <var class="var">multiplicand</var>)</code><a class="copiable-link" href="#index-mpq_005fmul"> &para;</a></span></dt>
 <dd><p>Set <var class="var">product</var> to <em class="math"><var class="var">multiplier</var> times <var class="var">multiplicand</var></em>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fmul_005f2exp"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_mul_2exp</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op1</var>, mp_bitcnt_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fmul_005f2exp"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fmul_005f2exp"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_mul_2exp</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op1</var>, mp_bitcnt_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fmul_005f2exp"> &para;</a></span></dt>
 <dd><p>Set <var class="var">rop</var> to <em class="math"><var class="var">op1</var> times 2 raised to
 <var class="var">op2</var></em>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fdiv"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_div</strong> <code class="def-code-arguments">(mpq_t <var class="var">quotient</var>, const mpq_t <var class="var">dividend</var>, const mpq_t <var class="var">divisor</var>)</code><a class="copiable-link" href="#index-mpq_005fdiv"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fdiv"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_div</strong> <code class="def-code-arguments">(mpq_t <var class="var">quotient</var>, const mpq_t <var class="var">dividend</var>, const mpq_t <var class="var">divisor</var>)</code><a class="copiable-link" href="#index-mpq_005fdiv"> &para;</a></span></dt>
 <dd><a class="index-entry-id" id="index-Division-functions-1"></a>
 <p>Set <var class="var">quotient</var> to <var class="var">dividend</var>/<var class="var">divisor</var>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fdiv_005f2exp"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_div_2exp</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op1</var>, mp_bitcnt_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fdiv_005f2exp"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fdiv_005f2exp"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_div_2exp</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op1</var>, mp_bitcnt_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fdiv_005f2exp"> &para;</a></span></dt>
 <dd><p>Set <var class="var">rop</var> to <em class="math"><var class="var">op1</var> divided by 2 raised to
 <var class="var">op2</var></em>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fneg"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_neg</strong> <code class="def-code-arguments">(mpq_t <var class="var">negated_operand</var>, const mpq_t <var class="var">operand</var>)</code><a class="copiable-link" href="#index-mpq_005fneg"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fneg"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_neg</strong> <code class="def-code-arguments">(mpq_t <var class="var">negated_operand</var>, const mpq_t <var class="var">operand</var>)</code><a class="copiable-link" href="#index-mpq_005fneg"> &para;</a></span></dt>
 <dd><p>Set <var class="var">negated_operand</var> to &minus;<var class="var">operand</var>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fabs"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_abs</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fabs"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fabs"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_abs</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fabs"> &para;</a></span></dt>
 <dd><p>Set <var class="var">rop</var> to the absolute value of <var class="var">op</var>.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005finv"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_inv</strong> <code class="def-code-arguments">(mpq_t <var class="var">inverted_number</var>, const mpq_t <var class="var">number</var>)</code><a class="copiable-link" href="#index-mpq_005finv"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005finv"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_inv</strong> <code class="def-code-arguments">(mpq_t <var class="var">inverted_number</var>, const mpq_t <var class="var">number</var>)</code><a class="copiable-link" href="#index-mpq_005finv"> &para;</a></span></dt>
 <dd><p>Set <var class="var">inverted_number</var> to 1/<var class="var">number</var>.  If the new denominator is
 zero, this routine will divide by zero.
 </p></dd></dl>
@@ -224,9 +224,9 @@ Next: <a href="#Applying-Integer-Functions" accesskey="n" rel="next">Applying In
 <h3 class="section" id="Comparison-Functions-1"><span>6.4 Comparison Functions<a class="copiable-link" href="#Comparison-Functions-1"> &para;</a></span></h3>
 <a class="index-entry-id" id="index-Rational-comparison-functions"></a>
 <a class="index-entry-id" id="index-Comparison-functions-1"></a>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fcmp"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, const mpq_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp"> &para;</a></span></dt>
-<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn" id="index-mpq_005fcmp_005fz"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp_z</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, const mpz_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp_005fz"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fcmp"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, const mpq_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fcmp_005fz"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp_z</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, const mpz_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp_005fz"> &para;</a></span></dt>
 <dd><p>Compare <var class="var">op1</var> and <var class="var">op2</var>.  Return a positive value if <em class="math"><var class="var">op1</var> &gt;
 <var class="var">op2</var></em>, zero if <em class="math"><var class="var">op1</var> = <var class="var">op2</var></em>, and a negative value if
 <em class="math"><var class="var">op1</var> &lt; <var class="var">op2</var></em>.
@@ -234,9 +234,9 @@ Next: <a href="#Applying-Integer-Functions" accesskey="n" rel="next">Applying In
 <p>To determine if two rationals are equal, <code class="code">mpq_equal</code> is faster than
 <code class="code">mpq_cmp</code>.
 </p></dd></dl>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-mpq_005fcmp_005fui"><span class="category-def">Macro: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp_ui</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, unsigned long int <var class="var">num2</var>, unsigned long int <var class="var">den2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp_005fui"> &para;</a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-mpq_005fcmp_005fsi"><span class="category-def">Macro: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp_si</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, long int <var class="var">num2</var>, unsigned long int <var class="var">den2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp_005fsi"> &para;</a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-mpq_005fcmp_005fui"><span class="category-def">Macro: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp_ui</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, unsigned long int <var class="var">num2</var>, unsigned long int <var class="var">den2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp_005fui"> &para;</a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fcmp_005fsi"><span class="category-def">Macro: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_cmp_si</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, long int <var class="var">num2</var>, unsigned long int <var class="var">den2</var>)</code><a class="copiable-link" href="#index-mpq_005fcmp_005fsi"> &para;</a></span></dt>
 <dd><p>Compare <var class="var">op1</var> and <var class="var">num2</var>/<var class="var">den2</var>.  Return a positive value if
 <em class="math"><var class="var">op1</var> &gt; <var class="var">num2</var>/<var class="var">den2</var></em>, zero if <em class="math"><var class="var">op1</var> =
 <var class="var">num2</var>/<var class="var">den2</var></em>, and a negative value if <em class="math"><var class="var">op1</var> &lt;
@@ -247,8 +247,8 @@ Next: <a href="#Applying-Integer-Functions" accesskey="n" rel="next">Applying In
 <p>These functions are implemented as macros and evaluate their arguments
 multiple times.
 </p></dd></dl>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-mpq_005fsgn"><span class="category-def">Macro: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_sgn</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fsgn"> &para;</a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-mpq_005fsgn"><span class="category-def">Macro: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_sgn</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fsgn"> &para;</a></span></dt>
 <dd><a class="index-entry-id" id="index-Sign-tests-1"></a>
 <a class="index-entry-id" id="index-Rational-sign-tests"></a>
 <p>Return <em class="math">+1</em> if <em class="math"><var class="var">op</var> &gt; 0</em>, 0 if <em class="math"><var class="var">op</var> = 0</em>, and
@@ -257,8 +257,8 @@ multiple times.
 <p>This function is actually implemented as a macro.  It evaluates its
 argument multiple times.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fequal"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_equal</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, const mpq_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fequal"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fequal"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">mpq_equal</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op1</var>, const mpq_t <var class="var">op2</var>)</code><a class="copiable-link" href="#index-mpq_005fequal"> &para;</a></span></dt>
 <dd><p>Return non-zero if <var class="var">op1</var> and <var class="var">op2</var> are equal, zero if they are
 non-equal.  Although <code class="code">mpq_cmp</code> can be used for the same purpose, this
 function is much faster.
@@ -282,20 +282,20 @@ access to the numerator and denominator of an <code class="code">mpq_t</code>.
 (see <a class="pxref" href="#Rational-Number-Functions">Rational Number Functions</a>) then <code class="code">mpq_canonicalize</code> must be
 called before any other <code class="code">mpq</code> functions are applied to that <code class="code">mpq_t</code>.
 </p>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-mpq_005fnumref"><span class="category-def">Macro: </span><span><code class="def-type">mpz_ptr</code> <strong class="def-name">mpq_numref</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fnumref"> &para;</a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-mpq_005fdenref"><span class="category-def">Macro: </span><span><code class="def-type">mpz_ptr</code> <strong class="def-name">mpq_denref</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fdenref"> &para;</a></span></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-mpq_005fnumref"><span class="category-def">Macro: </span><span><code class="def-type">mpz_ptr</code> <strong class="def-name">mpq_numref</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fnumref"> &para;</a></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fdenref"><span class="category-def">Macro: </span><span><code class="def-type">mpz_ptr</code> <strong class="def-name">mpq_denref</strong> <code class="def-code-arguments">(const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fdenref"> &para;</a></span></dt>
 <dd><p>Return a reference to the numerator and denominator of <var class="var">op</var>, respectively.
 The <code class="code">mpz</code> functions can be used on the result of these macros.  Such
 calls may modify the numerator or denominator. However, care
 should be taken so that <var class="var">op</var> remains in canonical form prior to a
 possible later call to an <code class="code">mpq</code> function.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fget_005fnum"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_get_num</strong> <code class="def-code-arguments">(mpz_t <var class="var">numerator</var>, const mpq_t <var class="var">rational</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fnum"> &para;</a></span></dt>
-<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn" id="index-mpq_005fget_005fden"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_get_den</strong> <code class="def-code-arguments">(mpz_t <var class="var">denominator</var>, const mpq_t <var class="var">rational</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fden"> &para;</a></span></dt>
-<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn" id="index-mpq_005fset_005fnum"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_num</strong> <code class="def-code-arguments">(mpq_t <var class="var">rational</var>, const mpz_t <var class="var">numerator</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fnum"> &para;</a></span></dt>
-<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn" id="index-mpq_005fset_005fden"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_den</strong> <code class="def-code-arguments">(mpq_t <var class="var">rational</var>, const mpz_t <var class="var">denominator</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fden"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fget_005fnum"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_get_num</strong> <code class="def-code-arguments">(mpz_t <var class="var">numerator</var>, const mpq_t <var class="var">rational</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fnum"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fget_005fden"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_get_den</strong> <code class="def-code-arguments">(mpz_t <var class="var">denominator</var>, const mpq_t <var class="var">rational</var>)</code><a class="copiable-link" href="#index-mpq_005fget_005fden"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fset_005fnum"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_num</strong> <code class="def-code-arguments">(mpq_t <var class="var">rational</var>, const mpz_t <var class="var">numerator</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fnum"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-mpq_005fset_005fden"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">mpq_set_den</strong> <code class="def-code-arguments">(mpq_t <var class="var">rational</var>, const mpz_t <var class="var">denominator</var>)</code><a class="copiable-link" href="#index-mpq_005fset_005fden"> &para;</a></span></dt>
 <dd><p>Get or set the numerator or denominator of a rational.  These functions are
 equivalent to calling <code class="code">mpz_set</code> with an appropriate <code class="code">mpq_numref</code> or
 <code class="code">mpq_denref</code>.  Direct use of <code class="code">mpq_numref</code> or <code class="code">mpq_denref</code> is
@@ -324,8 +324,8 @@ for these functions.
 </p>
 <p>See also <a class="ref" href="constant.Formatted_Output.html#Formatted-Output">Formatted Output</a> and <a class="ref" href="constant.Formatted_Input.html#Formatted-Input">Formatted Input</a>.
 </p>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005fout_005fstr"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">mpq_out_str</strong> <code class="def-code-arguments">(FILE *<var class="var">stream</var>, int <var class="var">base</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fout_005fstr"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005fout_005fstr"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">mpq_out_str</strong> <code class="def-code-arguments">(FILE *<var class="var">stream</var>, int <var class="var">base</var>, const mpq_t <var class="var">op</var>)</code><a class="copiable-link" href="#index-mpq_005fout_005fstr"> &para;</a></span></dt>
 <dd><p>Output <var class="var">op</var> on stdio stream <var class="var">stream</var>, as a string of digits in base
 <var class="var">base</var>.  The base argument may vary from 2 to 62 or from &minus;2 to
 &minus;36. Output is in the form
@@ -338,8 +338,8 @@ are used.
 </p>
 <p>Return the number of bytes written, or if an error occurred, return 0.
 </p></dd></dl>
-<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
-<dt class="deftypefn deftypefun-alias-deftypefn" id="index-mpq_005finp_005fstr"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">mpq_inp_str</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, FILE *<var class="var">stream</var>, int <var class="var">base</var>)</code><a class="copiable-link" href="#index-mpq_005finp_005fstr"> &para;</a></span></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-mpq_005finp_005fstr"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">mpq_inp_str</strong> <code class="def-code-arguments">(mpq_t <var class="var">rop</var>, FILE *<var class="var">stream</var>, int <var class="var">base</var>)</code><a class="copiable-link" href="#index-mpq_005finp_005fstr"> &para;</a></span></dt>
 <dd><p>Read a string of digits from <var class="var">stream</var> and convert them to a rational in
 <var class="var">rop</var>.  Any initial white-space characters are read and discarded.  Return
 the number of characters read (including white space), or 0 if a rational
