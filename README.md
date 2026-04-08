@@ -5,7 +5,78 @@ modification, are permitted in any medium without royalty provided the
 copyright notice and this notice are preserved. This file is offered
 as-is, without any warranty. -->
 
-# Rust low-level bindings for GMP, MPFR and MPC
+# Rust low-level bindings for GMP, MPFR and MPC — iOS Cross-Compilation Fork
+
+> **This is a patched fork** of [tspiteri/gmp-mpfr-sys](https://gitlab.com/tspiteri/gmp-mpfr-sys)
+> on the `mobile-build` branch.
+
+## Why this fork exists
+
+The upstream `gmp-mpfr-sys` crate hardcodes `--enable-fat` in `build.rs` when
+configuring GMP. On AArch64 this pulls in handwritten assembly routines that use
+GOT-relative relocations (`adrp`/`ldr :got_lo12:`) which are **incompatible
+with the iOS linker**, causing build failures like:
+
+```
+error: ADR/ADRP relocations must be GOT relative
+  adrp x7, :got:___gmp_binvert_limb_table
+```
+
+Additionally, without explicit iOS SDK flags, GMP's `configure` detects the host
+(macOS) instead of the cross-compilation target, producing a `libgmp.a` built
+for macOS that fails at link time:
+
+```
+ld: building for 'iOS', but linking in object file built for 'macOS'
+```
+
+## What was changed
+
+The only modified file is **`build.rs`**, in the `build_gmp()` function:
+
+1. **Disable assembly for iOS**: Uses `--disable-assembly` instead of
+   `--enable-fat` when the target contains `"ios"`, forcing GMP to use
+   portable C code only.
+
+2. **Inject iOS SDK sysroot**: For iOS targets, sets `CC`, `CFLAGS`, and
+   `CC_FOR_BUILD` environment variables using `xcrun` to point at the correct
+   iOS SDK (either `iphoneos` or `iphonesimulator`), ensuring GMP compiles
+   for the right platform.
+
+## Usage
+
+Use as a `[patch.crates-io]` override in your project:
+
+```toml
+[patch.crates-io]
+gmp-mpfr-sys = { path = "path/to/this/fork" }
+```
+
+## Keeping up with upstream
+
+```bash
+git remote add upstream https://gitlab.com/tspiteri/gmp-mpfr-sys.git  # one-time
+git fetch upstream
+git checkout mobile-build
+git merge upstream/master
+# Verify build_gmp() patch is intact in build.rs
+git push origin mobile-build
+```
+
+## Cache
+
+If you see stale macOS-built libraries being linked for iOS, clear the cache:
+
+```bash
+rm -rf ~/Library/Caches/gmp-mpfr-sys/1.7/aarch64-apple-ios
+rm -rf ~/Library/Caches/gmp-mpfr-sys/1.7/aarch64-apple-ios-sim
+```
+
+---
+
+*Original upstream README follows below.*
+
+---
 
 The gmp-mpfr-sys crate provides Rust FFI bindings to the following
 [GNU] arbitrary-precision libraries:
