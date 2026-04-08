@@ -647,7 +647,47 @@ fn build_gmp(env: &Environment, lib: &Path, header: &Path) {
     let build_dir = env.build_dir.join("gmp-build");
     create_dir_or_panic(&build_dir);
     println!("$ cd {build_dir:?}");
-    let mut conf = String::from("../gmp-src/configure --enable-fat --disable-shared --with-pic");
+    let is_ios = env
+        .cross_target
+        .as_ref()
+        .map_or(false, |t| t.contains("ios"));
+    let is_ios_sim = env
+        .cross_target
+        .as_ref()
+        .map_or(false, |t| t.contains("ios-sim"));
+    // For iOS targets, disable assembly (GMP's handwritten asm uses GOT relocations
+    // incompatible with iOS) and inject the correct SDK sysroot via CC/CFLAGS.
+    if is_ios {
+        let sdk = if is_ios_sim {
+            "iphonesimulator"
+        } else {
+            "iphoneos"
+        };
+        let output = std::process::Command::new("xcrun")
+            .args(["--sdk", sdk, "--show-sdk-path"])
+            .output()
+            .expect("failed to run xcrun");
+        let sdk_path = String::from_utf8(output.stdout).unwrap().trim().to_string();
+        let cc_val = format!("xcrun --sdk {} clang -arch arm64", sdk);
+        let cflags_val = format!(
+            "-isysroot {} -arch arm64 -miphoneos-version-min=14.0 -fembed-bitcode",
+            sdk_path
+        );
+        std::env::set_var("CC_FOR_BUILD", "clang");
+        std::env::set_var("CC", &cc_val);
+        std::env::set_var("CFLAGS", &cflags_val);
+        println!("$ export CC={cc_val:?}");
+        println!("$ export CFLAGS={cflags_val:?}");
+    }
+    let fat_flag = if is_ios {
+        "--disable-assembly"
+    } else {
+        "--enable-fat"
+    };
+    let mut conf = format!(
+        "../gmp-src/configure {} --disable-shared --with-pic",
+        fat_flag
+    );
     if let Some(cross_target) = env.cross_target.as_ref() {
         conf.push_str(" --host ");
         conf.push_str(get_actual_cross_target(cross_target));
