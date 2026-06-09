@@ -639,6 +639,11 @@ fn should_save_cache(env: &Environment, mpfr: bool, mpc: bool) -> bool {
 fn get_actual_cross_target(cross_target: &str) -> &str {
     match cross_target {
         "x86_64-pc-windows-gnu" => "x86_64-w64-mingw32",
+        // GMP's config.sub doesn't know Apple's `-sim` suffix. The simulator is
+        // ABI-compatible with macOS, so use the darwin host triple for configure;
+        // the iphonesimulator SDK is still selected via CC/CFLAGS above.
+        "aarch64-apple-ios-sim" => "aarch64-apple-darwin",
+        "x86_64-apple-ios-sim" => "x86_64-apple-darwin",
         _ => cross_target,
     }
 }
