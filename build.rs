@@ -644,6 +644,12 @@ fn get_actual_cross_target(cross_target: &str) -> &str {
         // the iphonesimulator SDK is still selected via CC/CFLAGS above.
         "aarch64-apple-ios-sim" => "aarch64-apple-darwin",
         "x86_64-apple-ios-sim" => "x86_64-apple-darwin",
+        // Real device: use the darwin host triple so GMP's aarch64 assembly
+        // emits Apple/Mach-O GOT relocations (@GOTPAGE/@GOTPAGEOFF) instead of
+        // ELF-style (:got:/:got_lo12:), which the Mach-O assembler rejects. The
+        // iphoneos SDK is still selected via CC/CFLAGS above; iOS is arm64
+        // Mach-O just like macOS, so the mpn asm is identical.
+        "aarch64-apple-ios" => "aarch64-apple-darwin",
         _ => cross_target,
     }
 }
@@ -675,17 +681,30 @@ fn build_gmp(env: &Environment, lib: &Path, header: &Path) {
         let sdk_path = String::from_utf8(output.stdout).unwrap().trim().to_string();
         let cc_val = format!("xcrun --sdk {} clang -arch arm64", sdk);
         let cflags_val = format!(
-            "-isysroot {} -arch arm64 -miphoneos-version-min=14.0 -fembed-bitcode",
+            "-isysroot {} -arch arm64 -miphoneos-version-min=16.0",
             sdk_path
         );
-        std::env::set_var("CC_FOR_BUILD", "clang");
+        // GMP's assembly build compiles helper "gen" programs that must run on
+        // the build machine. Xcode's build phase exports SDKROOT and
+        // IPHONEOS_DEPLOYMENT_TARGET, which clang honors, so a plain build
+        // compiler produces iOS binaries that macOS refuses to run (Killed: 9).
+        // Pin both the macOS SDK (--sdk macosx) and the macOS target triple
+        // (-target arm64-apple-macos) so these helpers are native and runnable.
+        let cc_for_build = "xcrun --sdk macosx clang -target arm64-apple-macos";
+        std::env::set_var("CC_FOR_BUILD", cc_for_build);
         std::env::set_var("CC", &cc_val);
         std::env::set_var("CFLAGS", &cflags_val);
+        println!("$ export CC_FOR_BUILD={cc_for_build:?}");
         println!("$ export CC={cc_val:?}");
         println!("$ export CFLAGS={cflags_val:?}");
     }
-    let fat_flag = if is_ios {
+    let fat_flag = if is_ios_sim {
         "--disable-assembly"
+    } else if is_ios {
+        // Real device (arm64): use GMP's native aarch64 assembly, but NOT
+        // --enable-fat. Fat is x86 runtime CPU-dispatch and its stricter
+        // build-system-compiler check breaks under cross CFLAGS.
+        ""
     } else {
         "--enable-fat"
     };
