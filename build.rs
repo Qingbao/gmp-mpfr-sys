@@ -1395,6 +1395,14 @@ fn compilation_target_allowed(host: &str, target: &str) -> bool {
         return true;
     }
 
+    // Apple mobile cross: macOS host -> iOS device/simulator. GMP builds fine
+    // here (same arch family, Mach-O ABI); the iOS SDK is selected via CC/CFLAGS
+    // and the host triple is remapped in get_actual_cross_target. This lets the
+    // mobile build cross-compile without the `force-cross` cargo feature.
+    if host.contains("-apple-darwin") && target.contains("-apple-ios") {
+        return true;
+    }
+
     false
 }
 

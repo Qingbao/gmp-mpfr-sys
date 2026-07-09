@@ -12,36 +12,65 @@ as-is, without any warranty. -->
 
 ## Why this fork exists
 
-The upstream `gmp-mpfr-sys` crate hardcodes `--enable-fat` in `build.rs` when
-configuring GMP. On AArch64 this pulls in handwritten assembly routines that use
-GOT-relative relocations (`adrp`/`ldr :got_lo12:`) which are **incompatible
-with the iOS linker**, causing build failures like:
+Upstream `gmp-mpfr-sys` does not cleanly cross-compile GMP to iOS, and the
+naive workaround — disabling GMP's assembly — is very costly: bignum-heavy
+workloads (e.g. modular exponentiation, `mpz_powm`) run **~20x slower** with
+the portable-C `mpn` routines than with the native AArch64 assembly. This fork
+keeps native assembly on the **iOS device** and works around the iOS-specific
+build issues rather than disabling it.
 
-```
-error: ADR/ADRP relocations must be GOT relative
-  adrp x7, :got:___gmp_binvert_limb_table
-```
+The issues it works around:
 
-Additionally, without explicit iOS SDK flags, GMP's `configure` detects the host
-(macOS) instead of the cross-compilation target, producing a `libgmp.a` built
-for macOS that fails at link time:
+- Upstream hardcodes `--enable-fat`, which on AArch64 pulls in assembly that
+  uses ELF-style GOT relocations (`adrp ... :got:`), rejected by the Mach-O
+  assembler:
 
-```
-ld: building for 'iOS', but linking in object file built for 'macOS'
-```
+  ```
+  error: ADR/ADRP relocations must be GOT relative
+    adrp x7, :got:___gmp_binvert_limb_table
+  ```
+
+- Without explicit SDK flags, `configure` detects the build host (macOS)
+  instead of the iOS target, producing a `libgmp.a` that fails at link time:
+
+  ```
+  ld: building for 'iOS', but linking in object file built for 'macOS'
+  ```
+
+- Under Xcode's build phase (`SDKROOT`/`IPHONEOS_DEPLOYMENT_TARGET` are
+  exported), GMP's build-time helper programs get compiled as iOS binaries and
+  are killed when run on the build host (`Killed: 9`).
+
+- Cross-compilation is gated behind the experimental `force-cross` feature.
 
 ## What was changed
 
-The only modified file is **`build.rs`**, in the `build_gmp()` function:
+The only modified file is **`build.rs`**. For the **iOS device**
+(`aarch64-apple-ios`), `build_gmp()` / `get_actual_cross_target()`:
 
-1. **Disable assembly for iOS**: Uses `--disable-assembly` instead of
-   `--enable-fat` when the target contains `"ios"`, forcing GMP to use
-   portable C code only.
+1. **Enable native assembly** — pass an empty configure flag (native AArch64
+   asm) instead of `--enable-fat` (fat is x86-only; its stricter
+   build-system-compiler check fails under the iOS cross `CFLAGS`).
 
-2. **Inject iOS SDK sysroot**: For iOS targets, sets `CC`, `CFLAGS`, and
-   `CC_FOR_BUILD` environment variables using `xcrun` to point at the correct
-   iOS SDK (either `iphoneos` or `iphonesimulator`), ensuring GMP compiles
-   for the right platform.
+2. **Remap the host triple** `aarch64-apple-ios` → `aarch64-apple-darwin`, so
+   GMP emits Apple/Mach-O GOT relocations (`@GOTPAGE`/`@GOTPAGEOFF`) instead of
+   ELF-style (`:got:`/`:got_lo12:`). iOS is AArch64 Mach-O like macOS, so the
+   `mpn` assembly is identical; the iOS SDK is still selected via `CC`/`CFLAGS`.
+
+3. **Set the build compiler to macOS** —
+   `CC_FOR_BUILD = "xcrun --sdk macosx clang -target arm64-apple-macos"`, so
+   GMP's build-time gen helpers are native and runnable (this overrides the
+   `SDKROOT`/`IPHONEOS_DEPLOYMENT_TARGET` that Xcode exports).
+
+4. **Inject the iOS SDK sysroot** — sets `CC`/`CFLAGS` via `xcrun` for the
+   `iphoneos` (or `iphonesimulator`) SDK, so target objects build for iOS.
+
+For the **iOS simulator** (`*-apple-ios-sim`), assembly stays
+`--disable-assembly` and the host is remapped to `*-apple-darwin`.
+
+Finally, `compilation_target_allowed()` permits `*-apple-darwin` →
+`*-apple-ios`, so the cross-compile works **without** enabling the
+`force-cross` feature.
 
 ## Usage
 
@@ -65,7 +94,11 @@ git push origin mobile-build
 
 ## Cache
 
-If you see stale macOS-built libraries being linked for iOS, clear the cache:
+The built libraries are cached (see *Caching the built C libraries* below),
+keyed by **crate version + target only**. Editing this `build.rs` does **not**
+invalidate the cache, so a changed patch can silently reuse a stale `libgmp.a`
+and your change appears to do nothing. After editing `build.rs` — or if a stale
+macOS-built library is linked for iOS — clear the cache:
 
 ```bash
 rm -rf ~/Library/Caches/gmp-mpfr-sys/1.7/aarch64-apple-ios
